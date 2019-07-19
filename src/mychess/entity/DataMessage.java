@@ -2,25 +2,25 @@ package mychess.entity;
 
 import java.io.Serializable;
 /**
- * å®¢æˆ·ç«¯ä¼ é€åˆ°æœåŠ¡ç«¯çš„æ•°æ®æ¶ˆæ¯
- * 2019å¹´1æœˆ3æ—¥ ä¸‹åˆ10:07:45
+ * ¿Í»§¶Ë´«ËÍµ½·şÎñ¶ËµÄÊı¾İÏûÏ¢
+ * 2019Äê1ÔÂ3ÈÕ ÏÂÎç10:07:45
  */
 public class DataMessage extends Message implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	public int prerow;//ç§»åŠ¨å‰æ£‹å­æ‰€åœ¨è¡Œ
+	public int prerow;//ÒÆ¶¯Ç°Æå×ÓËùÔÚĞĞ
 	
-	public int precol;//ç§»åŠ¨å‰æ£‹å­æ‰€åœ¨åˆ—
+	public int precol;//ÒÆ¶¯Ç°Æå×ÓËùÔÚÁĞ
 	
-	public int row;//ç°åœ¨æ£‹å­æ‰€åœ¨è¡Œ
+	public int row;//ÏÖÔÚÆå×ÓËùÔÚĞĞ
 	
-	public int col;//ç°åœ¨æ£‹å­æ‰€åœ¨åˆ—
+	public int col;//ÏÖÔÚÆå×ÓËùÔÚÁĞ
 	
-	public int chess;//ç§»åŠ¨çš„æ£‹å­ä»£å·
+	public int chess;//ÒÆ¶¯µÄÆå×Ó´úºÅ
 	
-	public int eatedChess;//è¢«åƒæ‰çš„æ£‹å­
+	public int eatedChess;//±»³ÔµôµÄÆå×Ó
 	
-	public String data;//æ•°æ®
+	public String data;//Êı¾İ
 
 	public int getPrerow() {
 		return prerow;

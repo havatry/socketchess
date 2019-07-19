@@ -3,15 +3,15 @@ package mychess.util;
 import mychess.client.ChessBoard;
 
 /**
- * ç§»åŠ¨è§„åˆ™ç±»
+ * ÒÆ¶¯¹æÔòÀà
  */
 public class JudgeMove {
-	ChessBoard cb;//ä¾èµ–æ£‹ç›˜å¯¹è±¡
+	ChessBoard cb;//ÒÀÀµÆåÅÌ¶ÔÏó
 	private int[][] data=new int[10][9];
 	private boolean isRed;
 	
 	/**
-	 * åˆå§‹åŒ–æ£‹ç›˜å¯¹è±¡ã€æ£‹å±€æ•°ç»„ã€æ‰§æ£‹è§’è‰²
+	 * ³õÊ¼»¯ÆåÅÌ¶ÔÏó¡¢Æå¾ÖÊı×é¡¢Ö´Æå½ÇÉ«
 	 * @param
 	 */
 	public JudgeMove(ChessBoard cb,int[][] data,boolean isRed) {
@@ -22,8 +22,8 @@ public class JudgeMove {
 	}
 	
 	/**
-	 * åˆ¤æ–­è½¦çš„ç§»åŠ¨æ˜¯å¦åˆç†
-	 * @param aixsæ˜¯ç§»åŠ¨ä¹‹å‰å’Œä¹‹åçš„ä¸¤å¯¹åæ ‡
+	 * ÅĞ¶Ï³µµÄÒÆ¶¯ÊÇ·ñºÏÀí
+	 * @param aixsÊÇÒÆ¶¯Ö®Ç°ºÍÖ®ºóµÄÁ½¶Ô×ø±ê
 	 */
 	public boolean move_che(int[] aixs) {
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0)
@@ -31,26 +31,26 @@ public class JudgeMove {
 			aixs[1]=aixs[3];
 			aixs[0]=aixs[2];
 			cb.setSelected(true);
-			return false;//åŒé¢œè‰²
+			return false;//Í¬ÑÕÉ«
 		}
 		if(aixs[2]<aixs[0] && aixs[3]==aixs[1]){
-			//æƒ³å¾€ä¸Šèµ°
+			//ÏëÍùÉÏ×ß
 			for(int i=aixs[2]+1;i<aixs[0];i++){
 				if(data[i-1][aixs[3]-1]!=0)
-					return false;//æœ‰å­æŒ¡äº†
+					return false;//ÓĞ×Óµ²ÁË
 			}
 		}else if(aixs[3]<aixs[1] && aixs[2]==aixs[0]){
-			//æƒ³å¾€å·¦èµ°
+			//ÏëÍù×ó×ß
 			for(int i=aixs[3]+1;i<aixs[1];i++)
 				if(data[aixs[2]-1][i-1]!=0)
 					return false;
 		}else if(aixs[2]>aixs[0] && aixs[3]==aixs[1]){
-			//æƒ³å¾€ä¸‹èµ°
+			//ÏëÍùÏÂ×ß
 			for(int i=aixs[0]+1;i<aixs[2];i++)
 				if(data[i-1][aixs[3]-1]!=0)
 					return false;
 		}else if(aixs[3]>aixs[1] && aixs[2]==aixs[0]){
-			//æƒ³å¾€å³èµ°
+			//ÏëÍùÓÒ×ß
 			for(int i=aixs[1]+1;i<aixs[3];i++)
 				if(data[aixs[2]-1][i-1]!=0)
 					return false;
@@ -58,7 +58,7 @@ public class JudgeMove {
 			if(data[aixs[2]-1][aixs[3]-1]==0)
 				return false;
 			else if((data[aixs[2]-1][aixs[3]-1]<8 && isRed) || (data[aixs[2]-1][aixs[3]-1]>=8 && !isRed)){
-				//æ¢å­é€‰æ‹©
+				//»»×ÓÑ¡Ôñ
 				aixs[1]=aixs[3];
 				aixs[0]=aixs[2];
 				cb.setSelected(true);
@@ -69,27 +69,27 @@ public class JudgeMove {
 	}
 	
 	public boolean move_pao(int[] aixs) {
-		//æ˜¯ç‚®
+		//ÊÇÅÚ
 		if(data[aixs[2]-1][aixs[3]-1]==0){
-			//å¦‚æœæ˜¯ç©ºæ ¼ï¼Œåƒè½¦ä¸€æ ·
+			//Èç¹ûÊÇ¿Õ¸ñ£¬Ïñ³µÒ»Ñù
 			if(aixs[2]<aixs[0] && aixs[3]==aixs[1]){
-				//æƒ³å¾€ä¸Šèµ°
+				//ÏëÍùÉÏ×ß
 				for(int i=aixs[2]+1;i<aixs[0];i++){
 					if(data[i-1][aixs[3]-1]!=0)
-						return false;//æœ‰å­æŒ¡äº†
+						return false;//ÓĞ×Óµ²ÁË
 				}
 			}else if(aixs[3]<aixs[1] && aixs[2]==aixs[0]){
-				//æƒ³å¾€å·¦èµ°
+				//ÏëÍù×ó×ß
 				for(int i=aixs[3]+1;i<aixs[1];i++)
 					if(data[aixs[2]-1][i-1]!=0)
 						return false;
 			}else if(aixs[2]>aixs[0] && aixs[3]==aixs[1]){
-				//æƒ³å¾€ä¸‹èµ°
+				//ÏëÍùÏÂ×ß
 				for(int i=aixs[0]+1;i<aixs[2];i++)
 					if(data[i-1][aixs[3]-1]!=0)
 						return false;
 			}else if(aixs[3]>aixs[1] && aixs[2]==aixs[0]){
-				//æƒ³å¾€å³èµ°
+				//ÏëÍùÓÒ×ß
 				for(int i=aixs[1]+1;i<aixs[3];i++)
 					if(data[aixs[2]-1][i-1]!=0)
 						return false;
@@ -102,27 +102,27 @@ public class JudgeMove {
 			cb.setSelected(true);
 			return false;
 		}else{
-			//æ˜¯å¯¹æ–¹çš„å­
-			//å¿…é¡»æ°å¥½éš”ä¸€ä¸ª
+			//ÊÇ¶Ô·½µÄ×Ó
+			//±ØĞëÇ¡ºÃ¸ôÒ»¸ö
 			int num=0;
 			if(aixs[2]<aixs[0] && aixs[3]==aixs[1]){
-				//ä¸Š
+				//ÉÏ
 				for(int i=aixs[2]+1;i<aixs[0];i++){
 					if(data[i-1][aixs[3]-1]!=0)
 						num++;
 				}
 			}else if(aixs[2]>aixs[0] && aixs[3]==aixs[1]){
-				//ä¸‹
+				//ÏÂ
 				for(int i=aixs[0]+1;i<aixs[2];i++)
 					if(data[i-1][aixs[3]-1]!=0)
 						num++;
 			}else if (aixs[2]==aixs[0] && aixs[3]>aixs[1]) {
-				//å³
+				//ÓÒ
 				for(int i=aixs[1]+1;i<aixs[3];i++)
 					if(data[aixs[2]-1][i-1]!=0)
 						num++;
 			}else if(aixs[2]==aixs[0] && aixs[3]<aixs[1]){
-				//å·¦
+				//×ó
 				for(int i=aixs[3]+1;i<aixs[1];i++)
 					if(data[aixs[2]-1][i-1]!=0)
 						num++;
@@ -134,7 +134,7 @@ public class JudgeMove {
 	}
 	
 	public boolean move_ma(int[] aixs) {
-		//æ˜¯é©¬
+		//ÊÇÂí
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0) 
 				|| (!isRed && data[aixs[2]-1][aixs[3]-1]>=8)){
 			aixs[1]=aixs[3];
@@ -143,27 +143,27 @@ public class JudgeMove {
 			return false;
 		}
 		if(aixs[3]-aixs[1]==2 && aixs[0]-aixs[2]==1){
-			//èººæ—¥ä¸œåŒ—æ–¹å‘
+			//ÌÉÈÕ¶«±±·½Ïò
 			if(data[aixs[0]-1][aixs[1]]!=0)
 				return false;
 		}else if(aixs[3]-aixs[1]==2 && aixs[2]-aixs[0]==1){
-			//èººæ—¥ä¸œå—æ–¹å‘
+			//ÌÉÈÕ¶«ÄÏ·½Ïò
 			if(data[aixs[0]-1][aixs[1]]!=0)
 				return false;
 		}else if(aixs[1]-aixs[3]==2 && aixs[2]-aixs[0]==1){
-			//èººæ—¥è¥¿å—æ–¹å‘
+			//ÌÉÈÕÎ÷ÄÏ·½Ïò
 			if(data[aixs[0]-1][aixs[1]-2]!=0)
 				return false;
 		}else if(aixs[1]-aixs[3]==2 && aixs[0]-aixs[2]==1){
-			//èººæ—¥è¥¿åŒ—æ–¹å‘
+			//ÌÉÈÕÎ÷±±·½Ïò
 			if(data[aixs[0]-1][aixs[1]-2]!=0)
 				return false;
 		}else if(aixs[3]-aixs[1]==1 && aixs[0]-aixs[2]==2){
-			//è·³æ—¥ä¸œåŒ—
+			//ÌøÈÕ¶«±±
 			if(data[aixs[0]-2][aixs[1]-1]!=0)
 				return false;
 		}else if(aixs[3]-aixs[1]==1 && aixs[2]-aixs[0]==2){
-			//è·³æ—¥ä¸œå—
+			//ÌøÈÕ¶«ÄÏ
 			if(data[aixs[0]][aixs[1]-1]!=0)
 				return false;
 		}else if(aixs[1]-aixs[3]==1 && aixs[2]-aixs[0]==2){
@@ -186,7 +186,7 @@ public class JudgeMove {
 	}
 	
 	public boolean move_xiang(int[] aixs) {
-		//æ˜¯ç›¸
+		//ÊÇÏà
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0) || (!isRed && data[aixs[2]-1][aixs[3]-1]>=8)){
 			aixs[1]=aixs[3];
 			aixs[0]=aixs[2];
@@ -196,32 +196,32 @@ public class JudgeMove {
 		}
 		if(isRed){
 			if(aixs[2]<=5)
-				return false;//ä¸èƒ½å‡ºå»
+				return false;//²»ÄÜ³öÈ¥
 		}else{
 			if(aixs[2]>5)
 				return false;
 		}
 		if(aixs[3]-aixs[1]==2 && aixs[0]-aixs[2]==2){
-			//å¾€ä¸œåŒ—æ–¹å‘
+			//Íù¶«±±·½Ïò
 			if(data[aixs[0]-2][aixs[1]]!=0)
 				return false;
 		}else if(aixs[3]-aixs[1]==2 && aixs[2]-aixs[0]==2){
-			//å¾€ä¸œå—æ–¹å‘
+			//Íù¶«ÄÏ·½Ïò
 			if(data[aixs[0]][aixs[1]]!=0)
 				return false;
 		}else if(aixs[1]-aixs[3]==2 && aixs[2]-aixs[0]==2){
-			//å¾€è¥¿å—æ–¹å‘
+			//ÍùÎ÷ÄÏ·½Ïò
 			if(data[aixs[0]][aixs[1]-2]!=0)
 				return false;
 		}else if(aixs[1]-aixs[3]==2 && aixs[0]-aixs[2]==2){
-			//å¾€è¥¿åŒ—æ–¹å‘
+			//ÍùÎ÷±±·½Ïò
 			if(data[aixs[0]-2][aixs[1]-2]!=0)
 				return false;
 		}else {
 			if(data[aixs[2]-1][aixs[3]-1]==0)
 				return false;
 			else if((data[aixs[2]-1][aixs[3]-1]<8 && isRed) || (data[aixs[2]-1][aixs[3]-1]>=8 && !isRed)){
-				//æ¢å­é€‰æ‹©
+				//»»×ÓÑ¡Ôñ
 				aixs[1]=aixs[3];
 				aixs[0]=aixs[2];
 				cb.setSelected(true);
@@ -232,7 +232,7 @@ public class JudgeMove {
 	}
 	
 	public boolean move_shi(int[] aixs) {
-		//å£«
+		//Ê¿
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0)
 				|| (!isRed && data[aixs[2]-1][aixs[3]-1]>=8)){
 			aixs[1]=aixs[3];
@@ -250,18 +250,18 @@ public class JudgeMove {
 				return false;
 		}
 		if(aixs[3]-aixs[1]==1 && aixs[2]-aixs[0]==1){
-			//å¾€ä¸œå—æ–¹å‘
+			//Íù¶«ÄÏ·½Ïò
 		}else if(aixs[3]-aixs[1]==1 && aixs[0]-aixs[2]==1){
-			//å¾€ä¸œåŒ—æ–¹å‘
+			//Íù¶«±±·½Ïò
 		}else if(aixs[1]-aixs[3]==1 && aixs[2]-aixs[0]==1){
-			//å¾€è¥¿å—æ–¹å‘
+			//ÍùÎ÷ÄÏ·½Ïò
 		}else if(aixs[1]-aixs[3]==1 && aixs[0]-aixs[2]==1){
-			//å¾€è¥¿åŒ—æ–¹å‘
+			//ÍùÎ÷±±·½Ïò
 		}else {
 			if(data[aixs[2]-1][aixs[3]-1]==0)
 				return false;
 			else if((data[aixs[2]-1][aixs[3]-1]<8 && isRed) || (data[aixs[2]-1][aixs[3]-1]>=8 && !isRed)){
-				//æ¢å­é€‰æ‹©
+				//»»×ÓÑ¡Ôñ
 				aixs[1]=aixs[3];
 				aixs[0]=aixs[2];
 				cb.setSelected(true);
@@ -272,7 +272,7 @@ public class JudgeMove {
 	}
 	
 	public boolean move_jiang(int[] aixs) {
-		//æ˜¯å°†
+		//ÊÇ½«
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0)
 				|| (!isRed && data[aixs[2]-1][aixs[3]-1]>=8)){
 			aixs[1]=aixs[3];
@@ -290,20 +290,20 @@ public class JudgeMove {
 				return false;
 		}
 		if(aixs[3]-aixs[1]==1 && aixs[2]==aixs[0]){
-			//å³è¾¹
+			//ÓÒ±ß
 		}
 		else if(aixs[3]==aixs[1] && aixs[0]-aixs[2]==1){
-			//ä¸Š
+			//ÉÏ
 		}
 		else if(aixs[1]-aixs[3]==1 && aixs[0]==aixs[2]){
-			//å·¦
+			//×ó
 		}else if(aixs[1]==aixs[3] && aixs[2]-aixs[0]==1){
-			//ä¸‹
+			//ÏÂ
 		}else {
 			if(data[aixs[2]-1][aixs[3]-1]==0)
 				return false;
 			else if((data[aixs[2]-1][aixs[3]-1]<8 && isRed) || (data[aixs[2]-1][aixs[3]-1]>=8 && !isRed)){
-				//æ¢å­é€‰æ‹©
+				//»»×ÓÑ¡Ôñ
 				aixs[1]=aixs[3];
 				aixs[0]=aixs[2];
 				cb.setSelected(true);
@@ -314,7 +314,7 @@ public class JudgeMove {
 	}
 	
 	public boolean move_bing(int[] aixs) {
-		//æ˜¯å…µ
+		//ÊÇ±ø
 		if((isRed && data[aixs[2]-1][aixs[3]-1]<8 && data[aixs[2]-1][aixs[3]-1]>0)
 				|| (!isRed && data[aixs[2]-1][aixs[3]-1]>=8)){
 			aixs[1]=aixs[3];
@@ -325,9 +325,9 @@ public class JudgeMove {
 		}
 		if(isRed){
 			if(aixs[0]>5){
-				//åœ¨è‡ªå·±çš„é˜µåœ°ä¸Š ä¸èƒ½å·¦å³ç§»åŠ¨
+				//ÔÚ×Ô¼ºµÄÕóµØÉÏ ²»ÄÜ×óÓÒÒÆ¶¯
 				if(aixs[0]-aixs[2]==1 && aixs[1]==aixs[3]){
-					//å‰è¿›
+					//Ç°½ø
 				}else if(data[aixs[2]-1][aixs[3]-1]<8){
 					aixs[1]=aixs[3];
 					aixs[0]=aixs[2];
@@ -337,13 +337,13 @@ public class JudgeMove {
 					return false;
 				}
 			}else{
-				//åœ¨å¯¹æ–¹é˜µåœ°ä¸Š
+				//ÔÚ¶Ô·½ÕóµØÉÏ
 				if(aixs[0]-aixs[2]==1 && aixs[1]==aixs[3]){
-					//è¿›
+					//½ø
 				}else if(aixs[0]==aixs[2] && aixs[1]-aixs[3]==1){
-					//å·¦
+					//×ó
 				}else if(aixs[0]==aixs[2] && aixs[3]-aixs[1]==1){
-					//å³
+					//ÓÒ
 				}else {
 					aixs[1]=aixs[3];
 					aixs[0]=aixs[2];
@@ -353,9 +353,9 @@ public class JudgeMove {
 			}
 		}else{
 			if(aixs[0]<=5){
-				//åœ¨è‡ªå·±çš„é˜µåœ°ä¸Š ä¸èƒ½å·¦å³ç§»åŠ¨
+				//ÔÚ×Ô¼ºµÄÕóµØÉÏ ²»ÄÜ×óÓÒÒÆ¶¯
 				if(aixs[0]-aixs[2]==-1 && aixs[1]==aixs[3]){
-					//å‰è¿›
+					//Ç°½ø
 				}else if(data[aixs[2]-1][aixs[3]-1]>=8){
 					aixs[1]=aixs[3];
 					aixs[0]=aixs[2];
@@ -365,13 +365,13 @@ public class JudgeMove {
 					return false;
 				}
 			}else{
-				//åœ¨å¯¹æ–¹é˜µåœ°ä¸Š
+				//ÔÚ¶Ô·½ÕóµØÉÏ
 				if(aixs[0]-aixs[2]==-1 && aixs[1]==aixs[3]){
-					//è¿›
+					//½ø
 				}else if(aixs[0]==aixs[2] && aixs[1]-aixs[3]==1){
-					//å·¦
+					//×ó
 				}else if(aixs[0]==aixs[2] && aixs[3]-aixs[1]==1){
-					//å³
+					//ÓÒ
 				}else {
 					aixs[1]=aixs[3];
 					aixs[0]=aixs[2];
