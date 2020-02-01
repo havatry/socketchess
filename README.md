@@ -14,5 +14,6 @@
 5.当自己走棋的时候，没有提示。同时走棋效果不是很好，吃子、将军提示没有完善。
 6.仅仅支持一对进行对弈，没有加入房间功能
 
------准备解决问题----
-All rights reserved by BUPTEngineer
+-----使用------
+1. 服务器部分，需要conf目录和ChessServer.jar。其中conf目录中的chess.properties中的chess.ip需要指定为部署ChessServer.jar的机器ip
+2. 客户端部分，需要conf目录和images目录以及ChessClient.jar。其中conf目录和服务器的一样
